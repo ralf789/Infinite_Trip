@@ -1,0 +1,81 @@
+html,
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+.key:before {
+  content: "◄";
+  left: 0;
+}
+.key:after {
+  content: "►";
+  right: 0;
+}
+.key:before,
+.key:after {
+  background: rgba(219, 141, 141, 0.89);
+  position: absolute;
+  top: 50%;
+  transition: 0.2s ease box-shadow, 0.2s ease margin;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  box-shadow: 0 2px 3px 0 black;
+}
+.controller:not(:focus) + .output:after {
+  opacity: 1;
+}
+.controller:not(:placeholder-shown):valid + .output .key:before,
+.controller:not(:placeholder-shown):invalid + .output .key:after {
+  box-shadow: 0 0 0 0 black;
+  margin-top: 5px;
+}
+
+/*screen*/
+.output {
+  pointer-events: none;
+  position: relative;
+  height: 175px;
+  width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(156, 88, 88);
+  transform-origin: center;
+  transform: scale(2);
+  
+}
+/*curtain*/
+.output:after {
+  content: "Trip to Hell";
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: 2s ease opacity;
+  opacity: 0;
+}
+
+.controller {
+  cursor: url('https://img.icons8.com/plasticine/100/000000/fire-element.png'), pointer;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+}
+

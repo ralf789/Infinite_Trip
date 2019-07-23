@@ -1,0 +1,46 @@
+.driver {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-top: 0;
+  margin-left: -85px;
+  top: 100px;
+  width: 160px;
+  justify-content: center;
+  animation: bouncing-around 0.2s  infinite;
+}
+.driver:after {
+  content: "";
+  position: relative;
+  left: 0;
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  transition: 2s ease-out left;
+  margin-left: -40px;
+}
+.controller:valid + .output .driver:after {
+  animation: drive-left 2s ;
+  left: -50px;
+}
+.controller:invalid + .output .driver:after {
+  animation: drive-right 2s;
+  left: 50px;
+}
+
+.controller:placeholder-shown + .output .driver:after {
+  animation: none;
+  left: 6;
+}
+
+
+/* Up Down fast*/
+@keyframes bouncing-around {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 1px;
+  }
+}
+
